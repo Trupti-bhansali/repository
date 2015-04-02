@@ -20,18 +20,17 @@
                     });
 </script>
 
-</style>
 </head>
 <body style = "background-color:lightgrey">
     <br>
     <br>
     <div align="center">
-        <h1>SLA Tracker - Please upload Files</h1>
+        <h1 style="font-family:verdana">SLA Tracker </h1>
  
         <form:form method="post" action="loadFile.html"
             modelAttribute="uploadForm" enctype="multipart/form-data">
- 
-            <p style="color:red">Select files to upload. Press Add button to add more file
+ 			<h2> Please upload Files </h2>
+            <p style="color:blue">Select files to upload. Press Add button to add more file
                 inputs.</p>
  
             <table id="fileTable">
