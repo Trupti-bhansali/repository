@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="spring-data-jpa">
+	<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider>
+	
+	<class>uk.co.o2.model.AGConsumer</class>
+	<class>uk.co.o2.cert.model.ConsumerCertDetail</class>
+	<class>uk.co.o2.cert.model.ConsumerCertDetailAdvanceSearch</class>
+	 -->
+	<!-- <class>com.cts.hisabkitab.vo.Address</class>
+	<class>com.cts.hisabkitab.vo.SpentDetails</class> -->  
+	
+
+		<properties>
+			<property name="hibernate.connection.url" value="jdbc:h2://localhost:8082/test" />
+			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
+			<property name="hibernate.connection.username" value="user" />
+			<property name="hibernate.connection.password" value="password" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+			<property name="hibernate.jdbc.batch_size" value="30" />
+            <property name="hibernate.use_sql_comments" value="true" />
+            <!-- <property name="hibernate.hbm2ddl.auto" value="create,update" /> -->
+            <!-- <property name="hibernate.ejb.naming_strategy"
+                value="org.hibernate.cfg.ImprovedNamingStrategy" /> -->
+            <property name="hibernate.connection.charSet"
+                value="UTF-8" />
+                
+		</properties>
+
+	</persistence-unit>
+	
+</persistence>
