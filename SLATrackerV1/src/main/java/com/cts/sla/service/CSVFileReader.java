@@ -1,11 +1,13 @@
 package com.cts.sla.service;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -14,17 +16,19 @@ import com.cts.sla.model.CaseDetail;
 public class CSVFileReader implements IFileReader {
 
 	@Override
-	public List<CaseDetail> read(File file) throws FileNotFoundException, IOException {
+	public List<CaseDetail> read(MultipartFile file) throws FileNotFoundException, IOException {
 
 		return getSLACaseDetailsFromCSV(file);
 	}
 
 	
-	private List<CaseDetail> getSLACaseDetailsFromCSV(File file)	throws FileNotFoundException, IOException {
+	private List<CaseDetail> getSLACaseDetailsFromCSV(MultipartFile file)	throws FileNotFoundException, IOException {
 
 		List<CaseDetail> caseList = new ArrayList<CaseDetail>();
+		Reader inputReader =  (new InputStreamReader(file.getInputStream()));
 		@SuppressWarnings("resource")
-		CSVReader reader = new CSVReader(new FileReader(file.getAbsoluteFile()));
+		CSVReader reader = new CSVReader(inputReader);
+		
 		int count = 0;
 		String[] details = null;
 		while ((details = reader.readNext()) != null) {
@@ -44,7 +48,7 @@ public class CSVFileReader implements IFileReader {
 				caseDetail.setCaseStatus(details[5]);
 				caseDetail.setPriority(details[6]);
 				caseDetail.setOwner(details[7]);
-				caseDetail.setDesciption(details[13]);
+				caseDetail.setDesciption(details[12]);
 
 				//TODO: set queue once csv format is final
 				

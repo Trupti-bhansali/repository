@@ -28,7 +28,7 @@ public class CaseDetail implements Serializable {
 	private Date caseCreationDateTime;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date targetFixDateTime;
-	private String desciption;
+	private String description;
 	private String SLAStatus;
 
 	public CaseDetail() {
@@ -46,7 +46,7 @@ public class CaseDetail implements Serializable {
 		this.caseStatus = caseStatus;
 		this.caseCreationDateTime = caseCreationDateTime;
 		this.targetFixDateTime = targetFixDateTime;
-		this.desciption = desciption;
+		this.description = desciption;
 	}
 
 	public String getCaseId() {
@@ -122,11 +122,11 @@ public class CaseDetail implements Serializable {
 	}
 
 	public String getDesciption() {
-		return desciption;
+		return description;
 	}
 
-	public void setDesciption(String desciption) {
-		this.desciption = desciption;
+	public void setDesciption(String description) {
+		this.description = description;
 	}
 
 	public String getSLAStatus() {
@@ -143,7 +143,7 @@ public class CaseDetail implements Serializable {
 				+ ", Age=" + age + ", queue=" + queue + ", owner=" + owner + ", Condition = " + condition
 				+ ", caseStatus=" + caseStatus + ", caseCreationDateTime="
 				+ caseCreationDateTime + ", targetFixDateTime="
-				+ targetFixDateTime + ", desciption=" + desciption + ", SLACaseStatus =" + SLAStatus + "]";
+				+ targetFixDateTime + ", desciption=" + description + ", SLACaseStatus =" + SLAStatus + "]";
 	}
 
 	
