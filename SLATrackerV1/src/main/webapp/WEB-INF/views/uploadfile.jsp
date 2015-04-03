@@ -18,6 +18,56 @@
                                         });
  
                     });
+    
+    
+    var _validFileExtensions = [".csv"];    
+    function Validate(oForm) {
+        var arrInputs = oForm.getElementsByTagName("input");
+        for (var i = 0; i < arrInputs.length; i++) {
+            var oInput = arrInputs[i];
+            if (oInput.type == "file") {
+                var sFileName = oInput.value;
+                if(sFileName.length == 0)
+                	{
+                	alert("Please upload File");
+                    return false;
+                	}
+                var sFileSize = oInput.size
+                var sizeValid = true;
+                if (sFileName.length > 0) {
+                    var blnValid = false;
+                    for (var j = 0; j < _validFileExtensions.length; j++) {
+                        var sCurExtension = _validFileExtensions[j];
+                        if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                            blnValid = true;
+                            break;
+                        }
+              
+                    }
+                    sFileSize += sFileSize;
+                    if(sFileSize > 1000000000)
+                    {
+                    	sizeValid = false;
+                    }
+                    
+                    if(! sizeValid)
+                    {
+                    	 alert("Sorry, File size should be less than 1GB, Currently its :" + sFileSize + " in bytes ");
+                         return false;	
+                    }
+                    if (!blnValid) {
+                        alert("Sorry, File " + sFileName + " is invalid.  Allowed extension is: " + _validFileExtensions.join(", "));
+                        return false;
+                    }
+                }
+                
+            }
+        }
+      
+        return true;
+    }
+    
+    
 </script>
 
 </head>
@@ -27,7 +77,7 @@
     <div align="center">
         <h1 style="font-family:verdana">SLA Tracker </h1>
  
-        <form:form method="post" action="loadFile.html"
+        <form:form onsubmit="return Validate(this);" method="post" action="loadFile.html"
             modelAttribute="uploadForm" enctype="multipart/form-data">
  			<h2> Please upload Files </h2>
             <p style="color:blue">Select files to upload. Press Add button to add more file
@@ -44,8 +94,8 @@
            
             
         </form:form>
- 
-        <br />
+        
+       <br />
     </div>
 </body>
 </html>
