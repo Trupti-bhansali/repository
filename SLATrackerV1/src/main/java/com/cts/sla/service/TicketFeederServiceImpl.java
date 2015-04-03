@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.transaction.NotSupportedException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +35,6 @@ public class TicketFeederServiceImpl implements ITicketFeederService{
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (ParseException e) {
-				e.printStackTrace();
-			} catch (NotSupportedException e) {
 				e.printStackTrace();
 			}
 			return slaCaseDetail;

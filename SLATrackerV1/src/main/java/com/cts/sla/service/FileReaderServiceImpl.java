@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.transaction.NotSupportedException;
-
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +14,7 @@ import com.cts.sla.model.CaseDetail;
 public class FileReaderServiceImpl implements IFileReaderService {
 	
 	@Override
-	public List<CaseDetail> readFile(MultipartFile file) throws FileNotFoundException, IOException, ParseException, NotSupportedException {
+	public List<CaseDetail> readFile(MultipartFile file) throws FileNotFoundException, IOException, ParseException {
 		List<CaseDetail> caseDetailList = null;
 		ReadFileFactory readFileFactory = new ReadFileFactory();
 		String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
@@ -25,10 +23,7 @@ public class FileReaderServiceImpl implements IFileReaderService {
 		{
 		caseDetailList =  reader.read(file);
 		}
-		else
-		{
-			throw new NotSupportedException("This file format is not supported:  " + file.getOriginalFilename());
-		}
+
 		return caseDetailList;
 	}
 

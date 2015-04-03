@@ -47,7 +47,6 @@
 <body>
 	<br>
 	<h3 style="color:blue">Owner Reports List</h3>
-	<c:if test="${!empty ownerCaseReports}">
 		<table class="tg">
 			<tr >
 				<th width="80">Owner</th>
@@ -75,6 +74,5 @@
 				<th>${grandTotalRow.grandRecordGrandTotal}</th>
 			</tr>
 		</table>
-	</c:if>
 </body>
 </html>
