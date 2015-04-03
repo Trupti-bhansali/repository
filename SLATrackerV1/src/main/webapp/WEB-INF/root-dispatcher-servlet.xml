@@ -27,6 +27,7 @@
 	 <context:component-scan base-package="com.cts.sla.model"/>
 	 <context:component-scan base-package="com.cts.sla.service"/>
 	 <context:component-scan base-package="com.cts.sla.repository"/>
+	  <context:component-scan base-package="com.cts.sla.util"/>
 	 
 	 <!-- <context:component-scan base-package="com.cts.innovation.dao"/> -->
 	 <mvc:resources mapping="/resources/**" location="/resources/" />

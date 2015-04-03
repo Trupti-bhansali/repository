@@ -1,4 +1,4 @@
-package com.cts.sla.service;
+package com.cts.sla.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;
