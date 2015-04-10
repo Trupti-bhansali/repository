@@ -2,14 +2,17 @@ package com.cts.sla.service;
 
 import java.util.List;
 
-import com.cts.sla.vo.GrandRecordVO;
-import com.cts.sla.vo.ReportDetailVO;
+import com.cts.sla.model.GrandRecord;
+import com.cts.sla.model.ReportDetail;
 
 public interface IGetCaseReportsService {
 	
-	public List<ReportDetailVO> getCaseReports();
+	public List<ReportDetail> getOwnerReports();
 
-	public GrandRecordVO getGrandRecordValues(
-			List<ReportDetailVO> caseDetailList);
+	public List<ReportDetail> getQueueReports();
+	
+	public List<ReportDetail> getStatusReports();
+	
+	public GrandRecord getGrandRecordValues( List<ReportDetail> caseDetailList);
 
 }

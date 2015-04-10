@@ -71,16 +71,16 @@
 </script>
 
 </head>
-<body style = "background-color:lightgrey">
+<body style = "background-color: #336699">
     <br>
     <br>
     <div align="center">
         <h1 style="font-family:verdana">SLA Tracker </h1>
  
-        <form:form onsubmit="return Validate(this);" method="post" action="loadFile.html"
+        <form:form onsubmit="return Validate(this);" method="post" action="uploadFile.html"
             modelAttribute="uploadForm" enctype="multipart/form-data">
  			<h2> Please upload Files </h2>
-            <p style="color:blue">Select files to upload. Press Add button to add more file
+            <p style= "font-weight: bold;">Select files to upload. Press Add button to add more file
                 inputs.</p>
  
             <table id="fileTable">
@@ -90,7 +90,7 @@
             </table>
             <br />
             <input type="submit" value="Upload" />
-           <input id="addFile" type="button" value="Add File" />
+           <input id="addFile" type="button" value="Add Multiple File" />
            
             
         </form:form>

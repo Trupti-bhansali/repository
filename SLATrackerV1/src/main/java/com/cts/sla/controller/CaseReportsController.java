@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cts.sla.model.GrandRecord;
+import com.cts.sla.model.ReportDetail;
 import com.cts.sla.service.IGetCaseReportsService;
-import com.cts.sla.vo.GrandRecordVO;
-import com.cts.sla.vo.ReportDetailVO;
 
 @Controller
 public class CaseReportsController {
@@ -20,12 +20,17 @@ public class CaseReportsController {
 
 	@RequestMapping(value = "/reports", method = RequestMethod.GET)
 	public void getReports(Model model) {
-		System.out.println("Inside CaseReportsController::getReports");
-		List<ReportDetailVO> caseDetailList=getCaseReportsService.getCaseReports();
+		System.out.println("Inside CaseReportsController");
+		List<ReportDetail> caseDetailList=getCaseReportsService.getOwnerReports();
 		model.addAttribute("ownerCaseReports",caseDetailList);
-		GrandRecordVO grandRecord=getCaseReportsService.getGrandRecordValues(caseDetailList);
+		GrandRecord grandRecord=getCaseReportsService.getGrandRecordValues(caseDetailList);
 		model.addAttribute("grandTotalRow",grandRecord);
 		
+		caseDetailList=getCaseReportsService.getQueueReports();
+		model.addAttribute("queueCaseReports",caseDetailList);
+		
+		caseDetailList=getCaseReportsService.getStatusReports();
+		model.addAttribute("statusCaseReports",caseDetailList);
+		
 	}
-	
 }

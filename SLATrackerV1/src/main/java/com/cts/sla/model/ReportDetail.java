@@ -1,6 +1,6 @@
-package com.cts.sla.vo;
+package com.cts.sla.model;
 
-public class ReportDetailVO {
+public class ReportDetail {
 	private String reportName;
 	private Integer alreadyBreached;
 	private Integer breachingToday;
@@ -66,8 +66,5 @@ public class ReportDetailVO {
 	public void setGrandTotal(Integer grandTotal) {
 		this.grandTotal = grandTotal;
 	}
-	
-	
-	
 
 }

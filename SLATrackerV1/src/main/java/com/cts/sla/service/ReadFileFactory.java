@@ -16,7 +16,6 @@ public class ReadFileFactory {
 		else if(extension.equalsIgnoreCase("TXT"))
 		{
 			//TODO not supported currently
-			//readfile =  new TXTFileReader();
 		}
 		
 		 return readfile;

@@ -1,8 +1,6 @@
 package com.cts.sla.service;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,36 +23,41 @@ public class TicketFeederServiceImpl implements ITicketFeederService{
 	
 	@Transactional
 	@Override
-	public List<CaseDetail> saveorUpdateCaseDetail(MultipartFile file) {
+	public List<String> saveorUpdateCaseDetail(List<MultipartFile> uploadFiles) {
+
+		List<String> fileNames = new ArrayList<String>();
+		if (null != uploadFiles && uploadFiles.size() > 0) {
+			List<List<CaseDetail>> casedetails = new ArrayList<List<CaseDetail>>();
 			
-			List<CaseDetail> slaCaseDetail = null;
-			try {
-				slaCaseDetail = saveorUpdateCaseDetail(fileReaderService.readFile(file));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ParseException e) {
-				e.printStackTrace();
+			for (MultipartFile multipartFile : uploadFiles) {
+
+				String fileName = multipartFile.getOriginalFilename();
+				if (fileName != null && !fileName.isEmpty()) {
+					fileNames.add(fileName);
+					List<CaseDetail> caseDetail = fileReaderService.readFile(multipartFile);
+					casedetails.add(caseDetail);
+
+				} else {
+					System.err.println("File is not valid");
+				}
+
 			}
-			return slaCaseDetail;
+
+			saveorUpdateCaseDetails(casedetails);
+			System.out.println("Successfully updated");
+
 		}
-	
-	
-	@Override
-	@Transactional
-	public List<CaseDetail> saveorUpdateCaseDetail(List<CaseDetail> caseDetails) {
-	for (CaseDetail caseDetail : caseDetails) {
-		saveorUpdateCaseDetail(caseDetail);
+		return fileNames;
+
 	}
-	 return caseDetails;
-}
+	
 
 	@Override
 	@Transactional
-	public CaseDetail saveorUpdateCaseDetail(CaseDetail caseDetail) {
+	public List<List<CaseDetail>> saveorUpdateCaseDetails(List<List<CaseDetail> > caseDetails) {
+	for(List<CaseDetail> caseDetail : caseDetails)
 		caseRepository.save(caseDetail);
-		return caseDetail;
+	return caseDetails;
 	}
 
 }

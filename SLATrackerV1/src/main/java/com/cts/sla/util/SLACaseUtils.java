@@ -23,8 +23,7 @@ public class SLACaseUtils {
 		Date inputDate = getInputDate(targetFixDate);
 		
 		if (getCurrentDateStr().compareTo(getInputDateStr(targetFixDate)) == 0 ) { 
-			//TODO: for status hold need to handle separately
-			
+	
 			if(currentDate.compareTo(inputDate) < 0 )
 			{
 				caseDetail.setSLAStatus(SLA_CASE_STATUS.Breach.toString());

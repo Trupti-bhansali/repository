@@ -1,6 +1,6 @@
-package com.cts.sla.vo;
+package com.cts.sla.model;
 
-public class GrandRecordVO {
+public class GrandRecord {
 	
 	private String grandRecordName;
 	private Integer grandRecordAlreadyBreached;

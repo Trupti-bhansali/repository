@@ -50,6 +50,7 @@ public class CSVFileReader implements IFileReader {
 				caseDetail.setPriority(details[6]);
 				caseDetail.setOwner(details[7]);
 				caseDetail.setDesciption(details[12]);
+				caseDetail.setQueue(details[13]);
 
 				//TODO: set queue once csv format is final
 				
